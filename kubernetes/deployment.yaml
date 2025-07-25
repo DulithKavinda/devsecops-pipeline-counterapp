@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tic-tac-toe
+  name: count-app
   labels:
-    app: tic-tac-toe
+    app: count-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: tic-tac-toe
+      app: count-app
   template:
     metadata:
       labels:
-        app: tic-tac-toe
+        app: count-app
     spec:
       containers:
-      - name: tic-tac-toe
+      - name: count-app
         image: ghcr.io/DulithKavinda/devsecops-pipeline-counterapp:sha-96ece2254fa6ac6938b6979e1b18b0c6f2d3696e
-        # Image will be automatically updated by CI/CD pipeline
         imagePullPolicy: Always
         ports:
         - containerPort: 80
