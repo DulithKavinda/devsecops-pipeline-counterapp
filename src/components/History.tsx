@@ -7,7 +7,7 @@ interface HistoryProps {
 const History: React.FC<HistoryProps> = ({ history }) => {
   return (
     <div className="w-full max-w-md">
-      <h2 className="text-xl font-semibold mb-2">History</h2>
+      <h2 className="text-xl font-semibold mb-2">Histories</h2>
       <ul className="list-disc list-inside bg-white p-4 rounded shadow">
         {history.length === 0 ? (
           <li className="text-gray-500">No history yet.</li>
