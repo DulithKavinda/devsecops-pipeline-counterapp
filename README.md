@@ -24,7 +24,6 @@ The primary goal of this setup is to demonstrate a secure and automated developm
 
 ## 🔐 Prerequisites
 
-- GitHub account
 - WSL2 or Linux
 - Docker installed and running
 - Git and GitHub CLI installed
