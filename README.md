@@ -99,7 +99,7 @@ Username: admin
 ```bash
 docker login ghcr.io -u <GHCR_USERNAME> -p <GHCR_TOKEN>
 
-Create a Kubernetes secret to pull images from GHCR:
+# Create a Kubernetes secret to pull images from GHCR:
 kubectl create secret docker-registry github-container-registry \
   --docker-server=ghcr.io \
   --docker-username=<GHCR_USERNAME> \
