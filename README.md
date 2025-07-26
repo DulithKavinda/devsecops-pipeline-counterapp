@@ -25,10 +25,10 @@ The primary goal of this setup is to demonstrate a secure and automated developm
 ## 🔐 Prerequisites
 
 - GitHub account
-- WSL2 or Linux (Ubuntu recommended)
+- WSL2 or Linux
 - Docker installed and running
 - Git and GitHub CLI installed
-- A GitHub Personal Access Token (with `write:packages`, `read:packages`, and `repo` scopes)
+- A GitHub Personal Access Token
 
 ---
 
@@ -39,13 +39,9 @@ The primary goal of this setup is to demonstrate a secure and automated developm
 In your GitHub repository:
 
 - Go to **Settings > Secrets and variables > Actions > New repository secret**
-- Add the following secrets:
+- Add the following secret
+`TOKEN`- GitHub Personal Access Token            
 
-| Name                     | Description                              |
-|--------------------------|------------------------------------------|
-| `GHCR_USERNAME`          | Your GitHub username                     |
-| `GHCR_TOKEN`             | GitHub Personal Access Token             |
-| `GHCR_EMAIL`             | Your GitHub email                        |
 
 ---
 
@@ -68,22 +64,33 @@ sudo mv kubectl /usr/local/bin/
 # Create kind cluster
 kind create cluster --name=devsecops-cluster
 
+```
 
-### 3. **🚀 Install Argo CD**
+### 3. 🚀 Install Argo CD
+
 # Create namespace and install Argo CD
+```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```bash
 
 # Expose Argo CD server
 kubectl port-forward svc/argocd-server -n argocd 9010:80
+```
 
 ### 4. 🔐 Get Argo CD Admin Credentials
+
+```bash
 kubectl get secret argocd-initial-admin-secret -n argocd -o yaml
 # Copy the base64 encoded password and decode it
 echo '<base64-password>' | base64 --decode
+```
 Username: admin
 
+
 ### 5. 🐳 Authenticate to GHCR (GitHub Container Registry)
+
+```bash
 docker login ghcr.io -u <GHCR_USERNAME> -p <GHCR_TOKEN>
 
 Create a Kubernetes secret to pull images from GHCR:
@@ -92,6 +99,7 @@ kubectl create secret docker-registry github-container-registry \
   --docker-username=<GHCR_USERNAME> \
   --docker-password=<GHCR_TOKEN> \
   --docker-email=<GHCR_EMAIL>
+```
 
 ### 6. 📦 CI/CD in Action
 Make any changes to your source code and push to GitHub.
@@ -103,6 +111,8 @@ GitHub Actions will:
 
 ### 7. 🌐 Access the Application
 To forward a pod port to your local machine:
+```bash
 kubectl get pods
 kubectl port-forward <your_pod_name> 3010:80
 Now access your app at http://localhost:3010
+```
