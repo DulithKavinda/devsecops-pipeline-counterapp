@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: count-app
-        image: ghcr.io/dulithkavinda/devsecops-pipeline-counterapp:c610a49baeb64e3970948ae705c8043cade15d15
+        image: ghcr.io/dulithkavinda/devsecops-pipeline-counterapp:fd7cdeb75809506dc354b6b37df6a7b669852c63
         imagePullPolicy: Always
         ports:
         - containerPort: 80
