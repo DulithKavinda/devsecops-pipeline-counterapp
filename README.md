@@ -68,6 +68,7 @@ sudo mv kubectl /usr/local/bin/
 # Create kind cluster
 kind create cluster --name=devsecops-cluster
 
+bash```
 
 ### 3. 🚀 Install Argo CD
 # Create namespace and install Argo CD
