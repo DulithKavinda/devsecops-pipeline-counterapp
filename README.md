@@ -68,7 +68,7 @@ kind create cluster --name=devsecops-cluster
 
 ### 3. 🚀 Install Argo CD
 
-# Create namespace and install Argo CD
+Create namespace and install Argo CD
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
