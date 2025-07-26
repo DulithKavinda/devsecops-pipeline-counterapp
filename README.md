@@ -38,8 +38,7 @@ The primary goal of this setup is to demonstrate a secure and automated developm
 In your GitHub repository:
 
 - Go to **Settings > Secrets and variables > Actions > New repository secret**
-- Add the following secret
-`TOKEN`- GitHub Personal Access Token            
+- Add the secret token          
 
 
 ---
