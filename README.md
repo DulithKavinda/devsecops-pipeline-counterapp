@@ -4,7 +4,7 @@ This repository contains a DevSecOps-based CI/CD pipeline for a simple **Counter
 
 - **CI:** GitHub Actions
 - **Container Registry:** GitHub Container Registry (GHCR)
-- **Kubernetes:** Local cluster using `kind`
+- **Kubernetes:** Local cluster using kind
 - **CD:** Argo CD
 
 The primary goal of this setup is to demonstrate a secure and automated development lifecycle using modern DevSecOps tools and best practices.
