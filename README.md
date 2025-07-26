@@ -66,6 +66,9 @@ kind create cluster --name=devsecops-cluster
 
 ```
 
+
+---
+
 ### 3. 🚀 Install Argo CD
 
 Create namespace and install Argo CD
@@ -78,6 +81,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl port-forward svc/argocd-server -n argocd 9010:80
 ```
 
+
+---
+
 ### 4. 🔐 Get Argo CD Admin Credentials
 
 ```bash
@@ -87,6 +93,8 @@ echo '<base64-password>' | base64 --decode
 ```
 Username: admin
 
+
+---
 
 ### 5. 🐳 Authenticate to GHCR (GitHub Container Registry)
 
@@ -101,6 +109,9 @@ kubectl create secret docker-registry github-container-registry \
   --docker-email=<GHCR_EMAIL>
 ```
 
+
+---
+
 ### 6. 📦 CI/CD in Action
 Make any changes to your source code and push to GitHub.
 GitHub Actions will:
@@ -108,6 +119,9 @@ GitHub Actions will:
 -Push it to GHCR
 -Update Kubernetes manifests (if configured)
 -Argo CD will auto-sync and deploy the latest image
+
+
+---
 
 ### 7. 🌐 Access the Application
 To forward a pod port to your local machine:
