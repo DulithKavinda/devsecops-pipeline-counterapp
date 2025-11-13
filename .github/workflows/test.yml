@@ -1,0 +1,33 @@
+name: Verify Authorized User Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_message:
+        description: "Message to print if authorized"
+        required: false
+        default: "Authorization successful!"
+
+jobs:
+  verify-user:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Verify Authorized User
+        env:
+          AUTHORIZED_USER: "DulithKavinda" # change to your GitHub username
+        run: |
+          ACTOR="${{ github.actor }}"
+          echo "🔍 Checking authorization for: $ACTOR"
+
+          if [ "$ACTOR" = "$AUTHORIZED_USER" ]; then
+            echo "✅ User '$ACTOR' is authorized to run this workflow."
+            echo "Message: ${{ github.event.inputs.test_message }}"
+          else
+            echo "::error::❌ Unauthorized user '$ACTOR'. Only '$AUTHORIZED_USER' can run this workflow."
+            exit 1
+          fi
